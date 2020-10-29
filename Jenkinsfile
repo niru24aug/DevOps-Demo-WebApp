@@ -8,6 +8,19 @@ pipeline {
                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/niru24aug/DevOps-Demo-WebApp.git']]])
             }
         }
+        stage('Sonarqube') {
+            environment {
+                scannerHome = tool 'sonarqubescanner'
+            }
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh """${scannerHome}/bin/sonar-scanner"""
+                }
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }                
          
         stage('build') {
             steps {
