@@ -3,6 +3,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                
+                echo 'testing pipeline'
                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/niru24aug/DevOps-Demo-WebApp.git']]])
             }
         }
