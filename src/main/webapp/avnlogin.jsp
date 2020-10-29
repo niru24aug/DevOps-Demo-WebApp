@@ -157,7 +157,6 @@ position: absolute;
 	top: 560px;
     left: 450px;
 }
-
 </style>
 <body>
 <div id="headlinks">
