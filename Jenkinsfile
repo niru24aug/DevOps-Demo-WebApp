@@ -15,7 +15,7 @@ pipeline {
             }
         }
     }
-}
+
         stage('Sonarqube') {
             environment {
                 scannerHome = tool 'sonarqubescanner'
