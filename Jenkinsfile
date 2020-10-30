@@ -41,6 +41,5 @@ pipeline {
                 echo 'test demo the application...'
             }
         }        
-    
-}
+    }
 
