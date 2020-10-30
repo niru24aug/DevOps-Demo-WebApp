@@ -7,9 +7,7 @@ pipeline {
                 echo 'testing pipeline'
                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/niru24aug/DevOps-Demo-WebApp.git']]])
             }
-            
-        }
-        stages {
+            }
         stage('Slack it'){
             steps {
                 slackSend channel: '#devops-alerts', 
